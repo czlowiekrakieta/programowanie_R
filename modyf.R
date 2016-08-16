@@ -160,5 +160,28 @@ podziel1 <- function(x) {
 }
 
 #zadanie 9
+mnozskal.trap <- function(x, k) {
+  M <- length(k)
+  N <- length(x)
+  if ( M > N ) {
+    gdzie <- which(k<0)
+    nowa <- split(unlist(x)*rep(k, each=4), rep(1:M, each=4))
+    
+    lapply( x[gdzie], rev)
+  }
+  else {
+    u <- rep_len(k, N)
+    gdzie <- which( u < 0 )
+    lapply( x[gdzie], rev)
+    nowa <- split( unlist(x)*rep(u, each=4), rep(1:N, each=4) )
+  }
+  nowa
+}
+
 
 #zadanie 10
+srednia.trap <- function(l) {
+  N <- length(l)
+  
+  kombinuj( lapply(kombinuj(l), mean))
+}
